@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/layout.astro' 
+import { getLatestLaunches, getLaunchBy } from '../../services/spacex'
+
+export const prerender = false
+const { id } = Astro.params
+
+let launch
+if (id) { // solo para el servidor
+    launch = await getLaunchBy({id})
+}
+
+export async function getStaticPaths() { // Hacer esto en número finito de páginas estaticas, ya que al hacer la build generamos esas páginas lo que lo hace muy veloz y efectivo. 
+    
+    const launches = await getLatestLaunches()
+
+    return launches.map(launch => ({
+        params: {id: launch.id}
+    }))
+}
+---
+<Layout title={`Lanzamiento ${id}`}>
+    <article class="flex gap-y-4 flex-col">
+        <img src={launch?.links?.patch.large} alt={launch.mission_name}>
+        <h2 class="text-4xl text-white font-bold">Launch #{launch?.flight_number}</h2>
+        <p class="text-lg">{launch?.details}</p>
+    </article>
+</Layout>
