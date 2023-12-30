@@ -1,6 +1,6 @@
----
+<!-- ---
 title: 'Contenido de la pagina'
-layout: '../layouts/Layout.astro'
+layout: '../layouts/layout.astro'
 ---
 # Esto es un ejemplo de artículo
 
@@ -16,4 +16,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit
 function (){
     console.log('hola mundo')
 }
-```
+``` -->
