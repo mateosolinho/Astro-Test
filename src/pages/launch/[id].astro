@@ -21,7 +21,7 @@ export async function getStaticPaths() { // Hacer esto en número finito de pág
 ---
 <Layout title={`Lanzamiento ${id}`}>
     <article class="flex gap-y-4 flex-col">
-        <img src={launch?.links?.patch.large} alt={launch.mission_name}>
+        <img src={launch.links.patch.small} alt={launch.mission_name}>
         <h2 class="text-4xl text-white font-bold">Launch #{launch?.flight_number}</h2>
         <p class="text-lg">{launch?.details}</p>
     </article>
